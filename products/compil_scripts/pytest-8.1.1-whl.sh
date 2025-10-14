@@ -38,10 +38,36 @@ cp -r "${SOURCE_DIR}"/* .
 
 export PIP_DISABLE_PIP_VERSION_CHECK=1
 export PIP_CACHE_DIR=${BUILD_DIR}/cache/pip
+export PATH=${PRODUCT_INSTALL}/bin:$PATH
+export PYTHONPATH=${PRODUCT_INSTALL}/lib/python${PYTHON_VERSION}/site-packages:$PYTHONPATH
 
 echo
-echo "*** install with $PYTHONBIN -m pip install . --no-binary :all: --prefix=$PRODUCT_INSTALL --no-build-isolation -vvv"
-${PYTHONBIN} -m pip install . --no-binary :all: "pluggy" --prefix=$PRODUCT_INSTALL -vvv
+echo "*** install with $PYTHONBIN -m pip install tomli-1.0.0-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv"
+${PYTHONBIN} -m pip install tomli-1.0.0-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv
+if [ $? -ne 0 ]; then
+echo "pip install exceptiongroup fails"
+exit 1
+fi
+
+echo
+echo "*** install with $PYTHONBIN -m pip install exceptiongroup-1.0.0-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv"
+${PYTHONBIN} -m pip install exceptiongroup-1.0.0-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv
+if [ $? -ne 0 ]; then
+echo "pip install exceptiongroup fails"
+exit 1
+fi
+
+echo
+echo "*** install with $PYTHONBIN -m pip install pluggy-1.4.0-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv"
+${PYTHONBIN} -m pip install pluggy-1.4.0-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv
+if [ $? -ne 0 ]; then
+echo "pip install exceptiongroup fails"
+exit 1
+fi
+
+echo
+echo "*** install with $PYTHONBIN -m pip install . --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv"
+${PYTHONBIN} -m pip install pytest-8.1.1-py3-none-any.whl --no-binary :all: --prefix=$PRODUCT_INSTALL -vvv
 if [ $? -ne 0 ]; then
 echo "pip install pytest fails"
 exit 1

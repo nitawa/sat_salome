@@ -1,7 +1,8 @@
+
 #!/bin/bash
 
 echo "##########################################################################"
-echo "pytest $VERSION"
+echo "$PRODUCT_NAME $VERSION"
 echo "##########################################################################"
 
 fix_lib_path(){
@@ -31,20 +32,40 @@ fix_lib_path(){
 	fi
 }
 
-rm -rf "${BUILD_DIR}"
-mkdir "${BUILD_DIR}"
-cd "${BUILD_DIR}" || { echo "cd ${BUILD_DIR} fails"; exit 1; }
-cp -r "${SOURCE_DIR}"/* .
+cd $BUILD_DIR
+cp -r $SOURCE_DIR/* .
 
 export PIP_DISABLE_PIP_VERSION_CHECK=1
 export PIP_CACHE_DIR=${BUILD_DIR}/cache/pip
 
-echo
-echo "*** install with $PYTHONBIN -m pip install . --no-binary :all: --prefix=$PRODUCT_INSTALL --no-build-isolation -vvv"
-${PYTHONBIN} -m pip install . --no-binary :all: "pluggy" --prefix=$PRODUCT_INSTALL -vvv
+# create a python virtual env
+echo "INFO: $PYTHONBIN -m venv $BUILD_DIR/${PRODUCT_NAME}_venv --system-site-packages"
+${PYTHONBIN} -m venv "$BUILD_DIR/${PRODUCT_NAME}_venv" --system-site-packages
 if [ $? -ne 0 ]; then
-echo "pip install pytest fails"
-exit 1
+    echo "ERROR: fail to create a venv"
+    exit 1
+fi
+
+# install dependencies
+echo "INFO: source ${BUILD_DIR}/${PRODUCT_NAME}_venv/bin/activate"
+. "${BUILD_DIR}/${PRODUCT_NAME}_venv/bin/activate"
+if [ $? -ne 0 ]; then
+    echo "ERROR: fail to create a venv"
+    exit 2
+fi
+
+echo "INFO: python3 -m pip install meson_python ninja setuptools-scm pybind11 cppy"
+python3 -m pip install flit-core
+if [ $? -ne 0 ]; then
+    echo "ERROR: fail to create a venv"
+    exit 3
+fi
+
+echo "INFO: running installation command"
+echo "python3 -m pip install . --no-binary :all: --no-build-isolation --prefix=$PRODUCT_INSTALL -vvv"
+if  ! python3 -m pip install . --no-binary :all: --no-build-isolation --prefix=$PRODUCT_INSTALL -vvv; then
+    echo "ERROR: fail to install ${PRODUCT_NAME} with pip"
+    exit 1
 fi
 
 fix_lib_path

@@ -41,11 +41,13 @@ APPLICATION :
         assimulo  : '3.5.2'
         Babel : 'native'
         BasicIterativeStatistics :  'v0.1.0'
+        bcrypt : 'native'
         boost : 'native'
         CAS : {tag : 'CR790-SALOME-PATCH', section: 'version_CR790_SALOME_PATCH', base:  'no'}
         catalyst: {tag: '2.0', section: 'version_v2_0_0', base: 'no'}
         C3PO: 'v2.3'
         certifi : 'native'
+        cffi : 'native'
         cftime: 'native'
         cgal : 'v5.6.1'
         cgns : '4.2.0'
@@ -53,6 +55,7 @@ APPLICATION :
         click : 'native'
         cmake : '3.31.6'
         cppunit : 'native'
+        cryptography : 'native'
         cminpack: '1.3.10'
         cork : '5987de5'
         cycler : 'native'
@@ -69,6 +72,7 @@ APPLICATION :
         fftw : 'native'
         freeimage : 'native'
         freetype : 'native'
+        gssapi :'native'
         gl2ps : 'native'
         gdal : '3.7.1'
         gmsh : '4.14.1'
@@ -78,6 +82,7 @@ APPLICATION :
         hdf5_openmpi : {tag : '1.14.6', base: 'no', hpc:'yes'}
         idna : 'native'
         imagesize : 'native'
+        invoke : 'native'
         ispc : '1.16.1'
         Jinja2 : 'native'
         joblib : 'native' # 1.1.0
@@ -121,6 +126,7 @@ APPLICATION :
         pandas : 'native'
         patsy : 'native'
         ParaView : {tag:'6.0.0.c61dcc8ee0', base: 'no',  section: 'version_6_0_0_MPI', hpc: 'yes'}
+        paramiko : 'native'
         PERSALYS : 'v19.0'
         petsc : '3.20.5'
         Pillow : 'native'
@@ -129,8 +135,10 @@ APPLICATION :
         poetry : {tag: '1.8.3', base: 'no', section: 'version_1_8_3_x86_64' }
         poetry_core : '1.9.0'
         proj : 'native'
-        pyyaml: 'native'
+        pyasn1 : 'native'
+        pycparser : 'native'
         PyFMI : '2.6'
+        pynacl : 'native'
         Pygments : 'native'
         pyparsing : 'native'
         PyQt : 'native'
@@ -141,6 +149,7 @@ APPLICATION :
         Python : 'native'
         pythonfmu : '0.6.3'
         pytz : 'native'
+        pyyaml: 'native'
         qt : 'native'
         qtpy : {tag : '2.4.1', base : 'no', section : 'version_2_4_1_no_pip', hpc: 'no'}
         qwt : 'native'
@@ -152,6 +161,7 @@ APPLICATION :
         scipy : 'native'
         scikit_learn : 'native' # 1.2.2/1.0
         scotch : {tag: '6.1.2', section: 'version_6_1_2_MPI', hpc: 'yes', base: 'no'}
+        scp : 'native'
         setuptools : 'native'
         sip : 'native'
         six : 'native'
@@ -171,6 +181,7 @@ APPLICATION :
         toml: 'native'
         tqdm : 'native' # 4.66.5
         TTK : '1.3.0'
+        typing_extensions : 'native'
         urllib3 : 'native'
         zeromq: '4.3.1'
         URANIE : '4.8.0'
@@ -220,6 +231,7 @@ APPLICATION :
         'OPENTURNS_SALOME'
         'YDEFX'
         'pmml'
+        'pybatch'
         'SALOMEBOOTSTRAP'
         'SOLVERLAB'
         'TopIIVolMesh'
@@ -267,6 +279,8 @@ __overwrite__ :
         'APPLICATION.products.opencv'           : '3.2.0'
         'APPLICATION.products.omniORB'          : '4.2.5'
         'APPLICATION.products.omniORBpy'        : '4.2.5'
+        'APPLICATION.products.setuptools'       : {tag: '80.9.0', base: 'no', section: 'version_80_9_0_no_pip' }
+        'APPLICATION.products.packaging'        : {tag: '24.2',   base: 'no', section: 'version_24_2_no_pip'   }
         'APPLICATION.products.h5py'             : {tag: '3.6.0',  base: 'no', section: 'version_3_6_0_no_pip'  }
         'APPLICATION.products.meshio'           : {tag: '5.3.5' , base: 'no', section: 'version_5_3_5_no_pip'  }
         'APPLICATION.products.PyFMI'            : {tag: '2.6',    base: 'no', section: 'version_2_6_UB22_04'   }
@@ -286,9 +300,9 @@ __overwrite__ :
         'APPLICATION.products.PyFMI'            : '2.13.1'
         'APPLICATION.products.swig'             : '4.0.2'
         'APPLICATION.products.h5py'             : {tag: '3.12.1', base: 'no', section: 'version_3_12_1_no_pip'}
-        'APPLICATION.products.meshio'           : {tag: '5.3.5',  base: 'no', section: 'version_5_3_5_no_pip'               }
-        'APPLICATION.products.omniORBpy'        : {tag: '4.2.5',  base: 'no', section: 'version_4_2_5_UB24_04'              }
-        'APPLICATION.products.nose_py3'         : {tag: '1.6.9',  base: 'no', section: 'version_1_6_9_no_pip'               }
+        'APPLICATION.products.meshio'           : {tag: '5.3.5',  base: 'no', section: 'version_5_3_5_no_pip' }
+        'APPLICATION.products.omniORBpy'        : {tag: '4.2.5',  base: 'no', section: 'version_4_2_5_UB24_04'}
+        'APPLICATION.products.nose_py3'         : {tag: '1.6.9',  base: 'no', section: 'version_1_6_9_no_pip' }
     }
     #
     {
@@ -298,7 +312,7 @@ __overwrite__ :
         'APPLICATION.products.MeshGems'         : '2.15-1'
         'APPLICATION.products.rich'             : 'native'
         'APPLICATION.products.opencv'           : '3.2.0'
-        'APPLICATION.products.pytest'           : '8.1.1'
+        'APPLICATION.products.pytest'           : {tag: '8.1.1',  base: 'no', section: 'version_8_1_1_DB11'  }
         'APPLICATION.products.pyyaml'           : {tag: '6.0',    base: 'no', section: 'version_6_0_x86_64'  }
         'APPLICATION.products.mdurl'            : {tag: '0.1.2',  base: 'no', section: 'version_0_1_2_no_pip'}
         'APPLICATION.products.markdown_it_py'   : {tag: '3.0.0',  base: 'no', section: 'version_3_0_0_no_pip'}
@@ -405,7 +419,7 @@ __overwrite__ :
     }
     {
          __condition__ : "VARS.dist in ['CO10']"
-        'APPLICATION.rm_products' : ['mesa', 'nose', 'sphinxcontrib_websupport', 'hdf5_openmpi']
+        'APPLICATION.rm_products' : ['mesa', 'nose', 'sphinxcontrib_websupport', 'invoke', 'hdf5_openmpi']
         'APPLICATION.products.cmake'          : 'native'
         'APPLICATION.products.gdal'           : 'native'
         'APPLICATION.products.hdf5'           : 'native'

@@ -6,12 +6,11 @@ import platform
 
 def set_env(env, prereq_dir, version):
     pyver = 'python' + env.get('PYTHON_VERSION')
-    env.set('PYTEST_ROOT_DIR',prereq_dir)
-    env.set("PYTEST_VERSION",version)
+    env.set('PYBATCH_ROOT_DIR',prereq_dir)
+    env.set("PYBATCH_VERSION",version)
     if not platform.system() == "Windows" :
+        env.prepend('PATH', os.path.join(prereq_dir, 'bin'))
         env.prepend('PYTHONPATH', os.path.join(prereq_dir, 'lib', pyver, 'site-packages'))
-        env.append('PATH',os.path.join(prereq_dir,'bin'))
-        env.set('PYTESTBIN',os.path.join(prereq_dir,'bin', 'pytest'))
     else:
         pass
 
