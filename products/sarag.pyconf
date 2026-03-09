@@ -1,0 +1,35 @@
+default :
+{
+    name : "sarag"
+    build_source : "script"
+    compil_script :  'sarag' + $VARS.scriptExtension
+    get_source : "git"
+    git_info:
+    {
+      repositories :
+      {
+        github : "https://github.com/nitawa/salome-assistant.git"
+      }
+    }
+    patches : []
+    system_info :
+    {
+        rpm : []
+        rpm_dev : []
+        apt : []
+        apt_dev : []
+    }
+    environ :
+    {
+       env_script : "sarag.py"
+    }
+    depend : ['Python','setuptools', 'DOCUMENTATION']
+    opt_depend: ['wheel', 'pyside', 'PyQt']
+    source_dir : $APPLICATION.workdir + $VARS.sep + 'SOURCES' + $VARS.sep + $name
+    build_dir : $APPLICATION.workdir + $VARS.sep + 'BUILD' + $VARS.sep + $name
+    install_dir : 'base'
+    properties :
+    {
+      incremental : "yes"
+    }
+}
