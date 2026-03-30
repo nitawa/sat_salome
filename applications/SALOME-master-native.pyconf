@@ -151,6 +151,7 @@ APPLICATION :
         pytz : 'native'
         pyyaml: 'native'
         qt : 'native'
+        QtRibbonWidget : 'master'
         qtpy : {tag : '2.4.1', base : 'no', section : 'version_2_4_1_no_pip', hpc: 'no'}
         qwt : 'native'
         rapidjson : '1.1.0'

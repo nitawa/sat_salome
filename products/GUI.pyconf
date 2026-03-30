@@ -30,7 +30,8 @@ default :
               "omniORB",
               "docutils",
               "libxml2",
-              "sphinxintl"
+              "sphinxintl",
+              "QtRibbonWidget"
            ]
     opt_depend : ["sphinx_rtd_theme", "openmpi", "graphviz", "sip", "PyQt", "pyside", "SALOMEBOOTSTRAP"]
     build_depend : ["cmake", "swig", "doxygen", "cppunit"]
