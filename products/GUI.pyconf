@@ -8,9 +8,10 @@ default :
     {
       repositories :
       {
-        tuleap : $PROJECTS.projects.salome.git_info.git_server.tuleap.url + "salome/gui.git"
-        github : $PROJECTS.projects.salome.git_info.git_server.github.url + "gui.git"
-        gitpub : $PROJECTS.projects.salome.git_info.git_server.gitpub.url + "modules/gui.git"
+         #tuleap : $PROJECTS.projects.salome.git_info.git_server.tuleap.url + "salome/gui.git"
+         github : "git@github.com:nitawa/gui.git"
+         # github : $PROJECTS.projects.salome.git_info.git_server.github.url + "gui.git"
+         # gitpub : $PROJECTS.projects.salome.git_info.git_server.gitpub.url + "modules/gui.git"
       }
     }
     environ :
