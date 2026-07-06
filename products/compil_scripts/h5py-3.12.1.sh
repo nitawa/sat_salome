@@ -21,6 +21,12 @@ case $LINUX_DISTRIBUTION in
 		;;
 esac
 
+if [ -n "$SAT_HPC" ]  && [ -n "$MPI_ROOT_DIR" ]; then
+    echo "WARNING: setting CC and CXX environment variables and target MPI wrapper"
+    export CXX="${MPI_CXX_COMPILER}"
+    export CC="${MPI_C_COMPILER}"
+fi
+
 H5PY_SETUP_REQUIRES=0
 ${PYTHONBIN} ./setup.py build
 

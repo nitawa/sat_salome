@@ -43,7 +43,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=1
 export PIP_CACHE_DIR=${BUILD_DIR}/cache/pip
 
 case $LINUX_DISTRIBUTION in
-    CO10)
+    CO10|DB12|DB11)
         echo "INFO: $PYTHONBIN -m venv $BUILD_DIR/${PRODUCT_NAME}_venv --system-site-packages"
         ${PYTHONBIN} -m venv "$BUILD_DIR/${PRODUCT_NAME}_venv" --system-site-packages
         if [ $? -ne 0 ]; then

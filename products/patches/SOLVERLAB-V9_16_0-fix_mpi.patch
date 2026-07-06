@@ -38,6 +38,23 @@ index 85416d8..7582523 100755
      delete _runLogFile;
  }
  void 
+diff --git a/CoreFlows/swig/CMakeLists.txt b/CoreFlows/swig/CMakeLists.txt
+index 6f9abb0..1946f21 100755
+--- a/CoreFlows/swig/CMakeLists.txt
++++ b/CoreFlows/swig/CMakeLists.txt
+@@ -11,10 +11,10 @@ INCLUDE_DIRECTORIES(
+ 
+ IF(    ${SOLVERLAB_WITH_MPI} )
+   if(     EXISTS ${MPI4PY_ROOT_DIR}/mpi4py/include/mpi4py/mpi4py.i)
+-    INCLUDE_DIRECTORIES( ${MPI4PY_ROOT_DIR}/mpi4py/include
++	  INCLUDE_DIRECTORIES(BEFORE ${MPI4PY_ROOT_DIR}/mpi4py/include
+                          ${MPI4PY_ROOT_DIR}/mpi4py/include/mpi4py )
+   elseif (EXISTS ${MPI4PY_ROOT_DIR}/include/mpi4py/mpi4py.i )
+-    INCLUDE_DIRECTORIES( ${MPI4PY_ROOT_DIR}/include
++	  INCLUDE_DIRECTORIES(BEFORE ${MPI4PY_ROOT_DIR}/include
+                          ${MPI4PY_ROOT_DIR}/include/mpi4py )
+   endif()
+ ENDIF( ${SOLVERLAB_WITH_MPI} )
 diff --git a/test/notebooks/getting_started.py b/test/notebooks/getting_started.py
 index 6181ac9..54747da 100644
 --- a/test/notebooks/getting_started.py

@@ -28,6 +28,17 @@ default :
     }
 }
 
+default_MPI: 
+{
+    system_info :
+    {
+        rpm : []
+        rpm_dev : ["fftw-openmpi-devel"] #,
+        apt : []
+        apt_dev : ["libfftw3-mpi-dev"] #,
+    }
+}
+
 default_win :
 {
    properties:

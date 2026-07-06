@@ -32,6 +32,11 @@ if [ -n "$SAT_HPC" ]; then
     export CXX=${MPI_CXX_COMPILER}
     export CC=${MPI_C_COMPILER}
     export FC=${MPI_Fortran_COMPILER}
+
+    if [[ $(nproc) -lt 8 ]]; then
+        echo "WARNING: number of procs is less than 8. Adding --oversubscribe option"
+        export OMPI_MCA_rmaps_base_oversubscribe=true
+    fi
 else
     export F77=gfortran
 fi
@@ -70,6 +75,7 @@ fi
 if [ "${SAT_swig_IS_NATIVE}" != "1" ] && [ "${LINUX_DISTRIBUTION}" != "DB13" ]; then
     CONFIGURE_FLAGS+=" --with-swig=$SWIG_ROOT_DIR"
 fi
+
 echo
 echo "*** configure   --prefix=$PRODUCT_INSTALL FFLAGS=\"${FFLAGS}\"   FCFLAGS=\"${FCFLAGS}\"   $CONFIGURE_FLAGS"
 $SOURCE_DIR/configure --prefix=$PRODUCT_INSTALL FFLAGS="${FFLAGS}"     FCFLAGS="${FCFLAGS}"     $CONFIGURE_FLAGS

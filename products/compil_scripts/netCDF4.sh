@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 echo "##########################################################################"
@@ -12,7 +11,7 @@ cp -R $SOURCE_DIR/* .
 
 USE_OLD_SETUPTOOLS=false
 
-if [[ $DIST_NAME == "CO" && "$SAT_Python_IS_NATIVE" == "1" ]]; then
+if [[ "$DIST_NAME" == "CO" && "$SAT_Python_IS_NATIVE" == "1" ]]; then
     PRODUCT_LIB=lib64
 else
     PRODUCT_LIB=lib
@@ -21,9 +20,15 @@ fi
 export PATH=$(pwd)/bin:$PATH
 export PYTHONPATH=$(pwd):$PYTHONPATH
 export PYTHONPATH=${PRODUCT_INSTALL}/${PRODUCT_LIB}/python${PYTHON_VERSION}/site-packages:$PYTHONPATH
-    
+
+if [ -n "$SAT_HPC" ]  && [ -n "$MPI_ROOT_DIR" ]; then
+    echo "WARNING: setting CC and CXX environment variables and target MPI wrapper"
+    export CXX="${MPI_CXX_COMPILER}"
+    export CC="${MPI_C_COMPILER}"
+fi
+
 echo
-if [ $USE_OLD_SETUPTOOLS ]; then
+if $USE_OLD_SETUPTOOLS; then
     echo "*** install with ${PYTHONBIN} -m pip install --cache-dir=$BUILD_DIR/cache/pip . --no-build-isolation  --prefix=$PRODUCT_INSTALL"
     ${PYTHONBIN} -m pip install --cache-dir=$BUILD_DIR/cache/pip . --no-build-isolation  --prefix=$PRODUCT_INSTALL -vvv
     if [ $? -ne 0 ]
