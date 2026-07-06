@@ -15,7 +15,8 @@ default :
     {
         env_script : $name + ".py"
     }
-    depend : ['Python', 'setuptools', 'numpy', 'openturns', 'Cython', 'pluggy']
+    depend : ['Python', 'setuptools', 'numpy', 'Cython', 'pluggy']
+opt_depend : ['openturns'] #FIXME
     source_dir : $APPLICATION.workdir + $VARS.sep + 'SOURCES' + $VARS.sep + $name
     build_dir : $APPLICATION.workdir + $VARS.sep + 'BUILD' + $VARS.sep + $name
     install_dir : 'base'
