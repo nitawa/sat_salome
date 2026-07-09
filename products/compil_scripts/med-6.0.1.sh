@@ -72,7 +72,7 @@ else
     esac
 fi
 
-if [ "${SAT_swig_IS_NATIVE}" != "1" ] && [ "${LINUX_DISTRIBUTION}" != "DB13" ]; then
+if [ "${LINUX_DISTRIBUTION}" != "DB13" ]; then
     CONFIGURE_FLAGS+=" --with-swig=$SWIG_ROOT_DIR"
 fi
 

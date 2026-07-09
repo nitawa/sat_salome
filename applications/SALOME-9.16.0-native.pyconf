@@ -379,6 +379,7 @@ __overwrite__ :
     #
     {
         __condition__ : "VARS.dist in ['DB13']"
+        'APPLICATION.rm_products' : ['mesa']
         'APPLICATION.products.cmake'            : 'native'
         'APPLICATION.products.cftime'           : 'native'
         'APPLICATION.products.gdal'             : 'native'
