@@ -10,6 +10,9 @@ default :
       {
         github : "https://github.com/nitawa/salome-assistant.git"
       }
+      git_commands: [
+                     'git submodule update --init --recursive'
+                    ]
     }
     patches : []
     system_info :
