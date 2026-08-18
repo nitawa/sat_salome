@@ -11,7 +11,7 @@ ${PYTHONBIN} -m venv ${PRODUCT_INSTALL}
 
 source ${PRODUCT_INSTALL}/bin/activate
 cd ${SOURCE_DIR}
-${PRODUCT_INSTALL}/bin/pip3 install .
+${PRODUCT_INSTALL}/bin/pip3 install . --extra-index-url https://download.pytorch.org/whl/cpu
 if [ $? -ne 0 ]; then
     echo "FATAL: could not install chatbot assistant"
     exit 1
