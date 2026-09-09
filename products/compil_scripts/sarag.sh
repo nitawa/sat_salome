@@ -30,9 +30,9 @@ fi
 
 # Ship the example config (used as the default when no user config exists at
 # ~/.config/salome/chatbot.config.json) and the chat icon next to the modules.
-cp ${SOURCE_DIR}/config.example.json ${PRODUCT_INSTALL}/lib/python${PYTHON_VERSION}/site-packages/config.example.json
+cp ${SOURCE_DIR}/chatbot.config.example.json ${PRODUCT_INSTALL}/lib/python${PYTHON_VERSION}/site-packages/chatbot.config.example.json
 if [ $? -ne 0 ]; then
-    echo "FATAL: could not copy config.example.json"
+    echo "FATAL: could not copy chatbot.config.example.json"
     exit 4
 fi
 cp ${SOURCE_DIR}/salome.jpg ${PRODUCT_INSTALL}/lib/python${PYTHON_VERSION}/site-packages/salome.jpg 2>/dev/null || true
